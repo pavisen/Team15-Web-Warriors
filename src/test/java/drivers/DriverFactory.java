@@ -56,10 +56,13 @@ public class DriverFactory {
     // Get the WebDriver instance
     public static WebDriver getDriver() {
         if (driver.get() == null) {
+        	
             throw new RuntimeException("WebDriver is not initialized. Please call initializeWebDriver() first.");
+            
         }
         return driver.get();
     }
+    
     public static ConfigReader configReader() {
         return configReader();
     }

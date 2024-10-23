@@ -1,4 +1,4 @@
-package hooks;
+package stepDefiniton;
 
 import java.io.ByteArrayInputStream;
 
@@ -16,13 +16,15 @@ import utilities.ConfigReader;
 import utilities.LoggerLoad;
 
 public class Hooks {
+	
 	public WebDriver driver;
-	DriverFactory driverFactory = new DriverFactory();
+	
 	
 	@Before
 	public void defineBrowser(Scenario scenario) throws Throwable {
-		
+		DriverFactory driverFactory = new DriverFactory();
 		ConfigReader.readConfig();
+		System.out.println("Inside the Hooks");
 		driverFactory.initializeWebDriver(ConfigReader.browserType());
 
 	}
@@ -42,7 +44,7 @@ public class Hooks {
 	  
 	  @After 
 	  public void afterScenario(Scenario scenario) {
-	  
+		  DriverFactory driverFactory = new DriverFactory();
 	  driverFactory.closeDriver();
 	  
 	  }

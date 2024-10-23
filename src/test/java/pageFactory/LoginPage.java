@@ -11,6 +11,7 @@ import utilities.ConfigReader;
 public class LoginPage {
 	
     public  WebDriver driver= DriverFactory.getDriver();
+    
 	String baseurl = ConfigReader.loginPage();
 	@FindBy(id="username")
 	WebElement username;
@@ -21,13 +22,17 @@ public class LoginPage {
 	
     public LoginPage() {
 
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);		
 
 	}
+    
+    
+    
 //To get LOg in URL
 	public void getbaseurl() {
 		driver.get(baseurl);
 	}
+	
 	public void enterUsername(String userName) {
 
 		username.sendKeys(userName);

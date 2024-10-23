@@ -11,13 +11,14 @@ import drivers.*;
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, // reporting purpose
 		monochrome = true, // console output
 		tags = " ", // tags from feature file
-		features = { "src/test/resources/features" }, // location of feature files
-		glue = { "stepDefiniton" })
+		features = "src/test/resources/features" , // location of feature files
+		glue =  "stepDefiniton" )
 
 // location of step definition files
+
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-	DriverFactory driverFactory;  // Declare an instance of DriverFactory
+	//DriverFactory driverFactory;  // Declare an instance of DriverFactory
 
 	static {
 		try {
@@ -35,24 +36,24 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	}
 
 
-	@Parameters({ "browser" })
-	public void defineBrowser( @Optional("chrome") String browser) throws Throwable {
-		ConfigReader.readConfig();  // Load configurations
-		LoggerLoad.info("Setting up WebDriver for browser: " + browser);
-
-		// Initialize DriverFactory and WebDriver
-		driverFactory= new drivers.DriverFactory();  // Create an instance of DriverFactory
-		driverFactory.initializeWebDriver(browser);  // Initialize WebDriver for the given browser
-
-		ConfigReader.setBrowserType(browser);  // Optional: for further configuration
-	}
-
+	/*
+	 * @Parameters({ "browser" }) public void defineBrowser( @Optional("chrome")
+	 * String browser) throws Throwable { ConfigReader.readConfig(); // Load
+	 * configurations LoggerLoad.info("Setting up WebDriver for browser: " +
+	 * browser);
+	 * 
+	 * // Initialize DriverFactory and WebDriver driverFactory= new
+	 * drivers.DriverFactory(); // Create an instance of DriverFactory
+	 * driverFactory.initializeWebDriver(browser); // Initialize WebDriver for the
+	 * given browser
+	 * 
+	 * ConfigReader.setBrowserType(browser); // Optional: for further configuration
+	 * }
+	 * 
+	 * 
+	 * public void tearDown() { // Close the WebDriver using the DriverFactory
+	 * instance if ( driverFactory!= null) { driverFactory.closeDriver(); }
+	 * LoggerLoad.info("Closed the WebDriver after test execution"); }
+	 */
 	
-	public void tearDown() {
-		// Close the WebDriver using the DriverFactory instance
-		if ( driverFactory!= null) {
-			driverFactory.closeDriver();
-		}
-		LoggerLoad.info("Closed the WebDriver after test execution");
-	}
 }
