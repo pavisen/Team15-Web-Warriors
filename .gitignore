@@ -1,1 +1,4 @@
 /target/
+/ExtentReports/
+/allure-results/
+/reports/

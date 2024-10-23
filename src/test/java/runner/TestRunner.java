@@ -12,7 +12,9 @@ import drivers.*;
 		monochrome = true, // console output
 		tags = " ", // tags from feature file
 		features = { "src/test/resources/features" }, // location of feature files
-		glue = { "stepDefinitions", "hooks" }) // location of step definition files
+		glue = { "stepDefiniton" })
+
+// location of step definition files
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	DriverFactory driverFactory;  // Declare an instance of DriverFactory
@@ -32,8 +34,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		return super.scenarios();
 	}
 
-	@BeforeTest
-	@BeforeMethod
+
 	@Parameters({ "browser" })
 	public void defineBrowser( @Optional("chrome") String browser) throws Throwable {
 		ConfigReader.readConfig();  // Load configurations
@@ -46,7 +47,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		ConfigReader.setBrowserType(browser);  // Optional: for further configuration
 	}
 
-	@AfterTest
+	
 	public void tearDown() {
 		// Close the WebDriver using the DriverFactory instance
 		if ( driverFactory!= null) {

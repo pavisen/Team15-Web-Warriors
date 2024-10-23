@@ -16,40 +16,42 @@ import utilities.ConfigReader;
 import utilities.LoggerLoad;
 
 public class Hooks {
-    public WebDriver driver;
-    DriverFactory driverFactory = new DriverFactory();
+	public WebDriver driver;
+	DriverFactory driverFactory = new DriverFactory();
+	
+	@Before
+	public void defineBrowser(Scenario scenario) throws Throwable {
+		
+		ConfigReader.readConfig();
+		driverFactory.initializeWebDriver(ConfigReader.browserType());
 
-    @Before
-    public void defineBrowser(Scenario scenario) throws Throwable {
-        ConfigReader.readConfig();
-       driverFactory.initializeWebDriver(ConfigReader.browserType());
+	}
 
-    }
+	@AfterStep
+	public void afterstep(Scenario scenario) {
+		if (scenario.isFailed()) {
+			LoggerLoad.error("Steps Failed , Taking Screenshot");
+			final byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(screenshot, "image/png", "My screenshot");
+			Allure.attachment("Myscreenshot", new ByteArrayInputStream(
+					((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES)));
+		}
+	}
 
-    @AfterStep
-    public void afterstep(Scenario scenario) {
-        if (scenario.isFailed()) {
-            LoggerLoad.error("Steps Failed , Taking Screenshot");
-            final byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "My screenshot");
-            Allure.attachment("Myscreenshot",
-                    new ByteArrayInputStream(((TakesScreenshot)  DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES)));
-        }
-    }
+	
+	  
+	  @After 
+	  public void afterScenario(Scenario scenario) {
+	  
+	  driverFactory.closeDriver();
+	  
+	  }
+	 
 
-   @After
-    public void afterScenario(Scenario scenario) {
-    
-        driverFactory.closeDriver();
-
-    }
-
-
-
-    // @AfterAll
-    // public static void after() throws InterruptedException {
-    //     Thread.sleep(6000);
-    //     driverFactory.closeDriver();
-    // }
+	// @AfterAll
+	// public static void after() throws InterruptedException {
+	// Thread.sleep(6000);
+	// driverFactory.closeDriver();
+	// }
 
 }

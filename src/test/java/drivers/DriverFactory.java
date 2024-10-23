@@ -19,6 +19,8 @@ public class DriverFactory {
 
     // Initialize WebDriver
     public  WebDriver initializeWebDriver(String browser) {
+    	
+    	browser ="chrome";
         if (driver.get() == null) { // Ensure WebDriver is only initialized once per thread
             if (browser.equalsIgnoreCase("chrome")) {
 

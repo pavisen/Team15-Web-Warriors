@@ -9,7 +9,8 @@ import drivers.DriverFactory;
 import utilities.ConfigReader;
 
 public class LoginPage {
-    public  WebDriver driver = DriverFactory.getDriver();
+	
+    public  WebDriver driver= DriverFactory.getDriver();
 	String baseurl = ConfigReader.loginPage();
 	@FindBy(id="username")
 	WebElement username;
@@ -17,6 +18,7 @@ public class LoginPage {
 	WebElement password;
 	@FindBy(id="login")
 	WebElement loginbtn;
+	
     public LoginPage() {
 
 		PageFactory.initElements(driver, this);
