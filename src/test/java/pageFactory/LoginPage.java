@@ -10,15 +10,15 @@ import utilities.ConfigReader;
 
 public class LoginPage {
 	
-    public  WebDriver driver= DriverFactory.getDriver();
+    public   WebDriver driver= DriverFactory.getDriver();
     
-	String baseurl = ConfigReader.loginPage();
+	static String baseurl = ConfigReader.loginPage();
 	@FindBy(id="username")
-	WebElement username;
+	 static WebElement username;
 	@FindBy(id="password")
-	WebElement password;
+	 static WebElement password;
 	@FindBy(id="login")
-	WebElement loginbtn;
+	 static WebElement loginbtn;
 	
     public LoginPage() {
 
@@ -29,11 +29,20 @@ public class LoginPage {
     
     
 //To get LOg in URL
-	public void getbaseurl() {
+	public  void getbaseurl() throws InterruptedException {
 		driver.get(baseurl);
+		
+		username.sendKeys("Sdet@gmail.com");
+		Thread.sleep(1000);
+		password.sendKeys("LmsHackathon@2024");
+		Thread.sleep(2000);
+		loginbtn.click();
+		Thread.sleep(2000);
 	}
 	
-	public void enterUsername(String userName) {
+	
+	
+	public  void enterUsername(String userName) {
 
 		username.sendKeys(userName);
 

@@ -27,9 +27,11 @@ public class LoginSteps {
     
     
     @Given("Admin launch the browser")
-    public void admin_launch_the_browser() {
+    public void admin_launch_the_browser() throws InterruptedException {
     	 LoginPage loginPage = new LoginPage();
     	  loginPage.getbaseurl();
+    	 
+    	  
     }
     @When("Admin gives the correct LMS portal URL")
     public void admin_gives_the_correct_lms_portal_url() {
