@@ -23,7 +23,7 @@ public class BatchEditSteps {
 
 	
 	@When("Admin clicks the edit icon")
-	public void admin_clicks_the_edit_icon() {
+	public void admin_clicks_the_edit_icon() throws InterruptedException {
 	    bep.ClickbatchEditIcon();
 		
 	}

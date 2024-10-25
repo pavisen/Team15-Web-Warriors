@@ -1,7 +1,9 @@
 package pageFactory;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -9,19 +11,19 @@ import drivers.DriverFactory;
 
 public class BatchEditPage {
 
-    public static  WebDriver driver= DriverFactory.getDriver();
+    public   WebDriver driver= DriverFactory.getDriver();
 
 	@FindBy(xpath = "//span[text()='Batch']")
-	public static WebElement Batch;
+	public  WebElement Batch;
 	
 	@FindBy(xpath = "//table/tbody/tr[1]/td[7]/div/span[1]/button")
-	public static WebElement BatchEditIcon;
+	public  WebElement BatchEditIcon;
 	
 	@FindBy(id="programName")
 	public static WebElement ProgNameDisabled;
 	
 	@FindBy(id="batchName")
-	public static WebElement BatchNameDisabled;
+	public  WebElement BatchNameDisabled;
 	
 
 	public BatchEditPage() {
@@ -33,8 +35,10 @@ public class BatchEditPage {
 	   Batch.click();
      }
    
-   public void ClickbatchEditIcon() {
-	  BatchEditIcon.click();
+   public void ClickbatchEditIcon() throws InterruptedException {
+	   Thread.sleep(1000);
+	   JavascriptExecutor js = (JavascriptExecutor) driver;
+	   js.executeScript("arguments[0].click();", BatchEditIcon);
      }
    
    

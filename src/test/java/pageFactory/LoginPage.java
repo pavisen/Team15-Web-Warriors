@@ -35,9 +35,9 @@ public class LoginPage {
 		username.sendKeys("Sdet@gmail.com");
 		Thread.sleep(1000);
 		password.sendKeys("LmsHackathon@2024");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		loginbtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	}
 	
 	

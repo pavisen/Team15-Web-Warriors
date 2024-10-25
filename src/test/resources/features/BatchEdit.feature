@@ -2,9 +2,9 @@
 @tag
 Feature: Title of your feature
 
-Background:
- Scenario: Launching application
-    Given Admin is on the Batch page
+#Background:
+ #Scenario: Launching application
+  #  Given Admin is on the Batch page
  
   @BatchEditIconValidation
   Scenario: Validate Edit icon feature in any row
