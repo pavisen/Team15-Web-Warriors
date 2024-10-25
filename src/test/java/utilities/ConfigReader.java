@@ -1,14 +1,18 @@
 package utilities;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
+	
     private static Properties properties;
-    private final static String propertyFilePath = ".\\config\\config.properties";
-
+    private final static String propertyFilePath = ".\\config\\config.properties";   
+    
+    
+    
     public static void readConfig() throws Throwable {
 
         InputStream fis;
@@ -23,7 +27,40 @@ public class ConfigReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    } 
+   
+    
+  
+    
+    //DashboardURL
+    
+    public static String DashboardURL()
+    {    	
+    	 String DashboardURL=properties.getProperty("dashboardurl");
+    	 if (DashboardURL != null)
+		    return DashboardURL;
+    	 else 
+    		 throw new RuntimeException("Username not specified in the Config.properties file");
+    }
+    
+    // UserName
+    public static String userName()
+    {    	
+    	 String loginUserName=properties.getProperty("username");
+    	 if (loginUserName != null)
+		    return loginUserName;
+    	 else 
+    		 throw new RuntimeException("Username not specified in the Config.properties file");
+    }
+    
+    // Password
+    public static String passWord()
+    {    	
+    	 String loginPassword=properties.getProperty("password");
+    	 if (loginPassword != null)
+		    return loginPassword;
+    	 else 
+    		 throw new RuntimeException("Password not specified in the Config.properties file");
     }
 
     // Browser Type
