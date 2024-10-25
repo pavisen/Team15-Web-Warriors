@@ -5,3 +5,6 @@
 /allure-results
 /test-output
 /ExtentReports
+/.settings
+/.classpath
+/.project 
