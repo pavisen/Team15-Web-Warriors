@@ -2,6 +2,6 @@
 /target/
 /.metadata/
 /logs/
-/allure-results/
-/test-output/
-/reports/
+/allure-results
+/test-output
+/ExtentReports
