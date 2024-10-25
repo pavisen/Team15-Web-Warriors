@@ -23,8 +23,7 @@ public class Hooks {
 	@Before
 	public void defineBrowser(Scenario scenario) throws Throwable {
 		DriverFactory driverFactory = new DriverFactory();
-		ConfigReader.readConfig();
-		System.out.println("Inside the Hooks");
+		ConfigReader.readConfig();		
 		driverFactory.initializeWebDriver(ConfigReader.browserType());
 
 	}
