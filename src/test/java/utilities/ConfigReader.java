@@ -35,8 +35,6 @@ public class ConfigReader {
         else
             throw new RuntimeException("Browser Not Specified in Config.Properties file");
     }
-
-
     // Signin URL
     public static String loginPage() {
         String loginurl = properties.getProperty("baseurl");
@@ -45,9 +43,6 @@ public class ConfigReader {
         else
             throw new RuntimeException("login not specified in the Config.properties file");
     }
-
-   
-
     public static String getexcelfilepath() {
         String excelfilelpath = properties.getProperty("excelFilePath");
         if (excelfilelpath != null)
@@ -57,7 +52,64 @@ public class ConfigReader {
     }
 
   
-
+    // UserName
+    public static String userName()
+    {    	
+    	 String loginUserName=properties.getProperty("username");
+    	 if (loginUserName != null)
+		    return loginUserName;
+    	 else 
+    		 throw new RuntimeException("Username not specified in the Config.properties file");
+    }
+    
+    // Password
+    public static String passWord()
+    {    	
+    	 String loginPassword=properties.getProperty("password");
+    	 if (loginPassword != null)
+		    return loginPassword;
+    	 else 
+    		 throw new RuntimeException("Password not specified in the Config.properties file");
+    }
+    
+    //Program Name
+    public static String GetEditProgramName()
+    {    	
+    	 String EditProgramName=properties.getProperty("EditProgramName");
+    	 if (EditProgramName != null)
+		    return EditProgramName;
+    	 else 
+    		 throw new RuntimeException("EditProgram not specified in the Config.properties file");
+    }
+    
+    //Edit_Program Description
+    public static String GetEditProgramDescription()
+    {    	
+    	 String EditProgDesc=properties.getProperty("EditProgramDescription");
+    	 if (EditProgDesc != null)
+		    return EditProgDesc;
+    	 else 
+    		 throw new RuntimeException("EditDescription not specified in the Config.properties file");
+    }
+    
+  //Search Program Name
+    public static String SearchProgName()
+    {    	
+    	 String SearchProgName=properties.getProperty("SearchProgName");
+    	 if (SearchProgName != null)
+		    return SearchProgName;
+    	 else 
+    		 throw new RuntimeException("Program name is not specified in the Config.properties file");
+    }
+    //Search Program Description
+    public static String SearchProgDescription()
+    {    	
+    	 String SearchProgDesc=properties.getProperty("SearchProgDesc");
+    	 if (SearchProgDesc != null)
+		    return SearchProgDesc;
+    	 else 
+    		 throw new RuntimeException("Program Description is not specified in the Config.properties file");
+    }
 
 
     // public static String geturl(String pagename) {
