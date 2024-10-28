@@ -39,19 +39,19 @@ Then Admin should land on dashboard page_1
 ######Edit Program Test Scenarios#########################
 @Verify_Click_Edit
 Scenario: Verify Edit option
-    Given Admin enter particular programname in Searchbar to edit the name
+    #Given Admin enter particular programname in Searchbar to edit the name
     When Admin clicks on Edit option for particular program
     Then Admin lands on Program details form
 
 @Verify_Title_Popup
 Scenario: Verify title of the pop up window
-    Given Admin is on Program module_1
+    #Given Admin is on Program module_1
     When Admin clicks on Edit option for particular program_1
     Then Admin should see window title as Program Details
     
 @Verify_Mandetory_Field
 Scenario: Verify mandatory fields with red * mark 
-    Given Admin is on Program module home page
+    #Given Admin is on Program module home page
     When Admin clicks on Edit option for particular program_2
     Then Admin should see red * mark beside mandatory field Name 
     
