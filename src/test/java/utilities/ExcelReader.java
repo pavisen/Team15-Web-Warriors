@@ -102,7 +102,14 @@ public class ExcelReader {
                 			cellValue= row.getCell(2).getStringCellValue();
                 		else
                 			cellValue = "";
-                	}               	   
+                	}
+                	else if(Entry== "ErrorMessage")
+                	{
+                		if(null !=row.getCell(3))
+                			cellValue= row.getCell(3).getStringCellValue();
+                		else
+                			cellValue = "";
+                	}
                 	
             }
 

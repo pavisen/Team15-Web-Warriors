@@ -9,12 +9,10 @@ import java.util.Properties;
 public class ConfigReader {
 	
     private static Properties properties;
-    private final static String propertyFilePath = ".\\config\\config.properties";   
-    
+    private final static String propertyFilePath = ".\\config\\config.properties";    
     
     
     public static void readConfig() throws Throwable {
-
         InputStream fis;
         fis = ConfigReader.class.getClassLoader().getResourceAsStream(propertyFilePath);
         properties = new Properties();
@@ -30,6 +28,15 @@ public class ConfigReader {
     } 
    
     
+    // Invalid BaseURL
+    public static String Invalid_BaseURL()
+    {
+    	String InvalidBaseURL=properties.getProperty("InvalidBaseURL");
+   	 if (InvalidBaseURL != null)
+		    return InvalidBaseURL;
+   	 else 
+   		 throw new RuntimeException("Username not specified in the Config.properties file");
+    }
   
     
     //DashboardURL
