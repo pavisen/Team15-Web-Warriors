@@ -24,7 +24,7 @@ import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import utilities.ConfigReader;
 import utilities.Utility_Methods;
-
+import org.sikuli.script.*;
 
 
 
@@ -144,6 +144,49 @@ public class HomePage {
 					return false;
 				}
 
+	}
+	
+	public boolean isCompanyLogoOntheLeftSide() {
+		boolean isLeftSide = false;
+		
+		try {
+            // Create a Screen object
+            Screen screen = new Screen();
+            
+            // Define the path to the full logo and the sub-image
+            String logoPath = "C:/Users/anbum/OneDrive/Desktop/Anbu/LMS_Hackathon/LMS-logo.png";
+            String subImagePath = "C:/Users/anbum/OneDrive/Desktop/Anbu/LMS_Hackathon/Numpy_Logo.png";
+            
+            // Define the region for the logo
+            // Assume the logo is located at (100, 100) with a width of 200 and height of 100
+            int logoX = 100; 
+            int logoY = 100;
+            int logoWidth = 100; 
+            int logoHeight = 100;
+            
+            // Define a region for the left side of the logo
+            Region logoRegion = new Region(logoX, logoY, logoWidth, logoHeight);
+            Region leftRegion = new Region(logoX, logoY, logoWidth / 2, logoHeight); // Left half of the logo
+            
+            // Check if the logo is present on the screen
+            if (screen.exists(logoPath) != null) {
+                System.out.println("Logo is present on the screen.");
+                  
+                // Check if the sub-image is present in the left region of the logo
+                if (leftRegion.exists(subImagePath) != null) {
+                    System.out.println("The sub-image is present on the left side of the logo.");
+                    isLeftSide = true;
+                } else {
+                    System.out.println("The sub-image is NOT present on the left side of the logo.");
+                    isLeftSide = false;
+                }
+            } else {
+                System.out.println("Logo is NOT present on the screen.");
+            }
+        } catch (Exception  e) {
+            e.printStackTrace();
+        }
+		return isLeftSide;
 	}
 	
 	public boolean appicationNameValidation(String ExpText,boolean order) throws TesseractException, IOException 

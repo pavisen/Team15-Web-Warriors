@@ -73,7 +73,7 @@ public class HomepageSteps {
 	
 	@Then("Admin should see logo on the left side")
 	public void admin_should_see_logo_on_the_left_side() throws IOException, TesseractException {
-		Assert.assertEquals(homepage.companyLogoValidation(), true);
+		Assert.assertEquals(homepage.isCompanyLogoOntheLeftSide(), true);
 			
 }
 	//Verify application name
