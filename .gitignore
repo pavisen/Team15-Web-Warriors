@@ -1,5 +1,4 @@
-/target/
-/target/
+target/
 /.metadata/
 /logs/
 /allure-results
@@ -7,4 +6,5 @@
 /ExtentReports
 /.settings
 /.classpath
-/.project 
+/.vscode
+/.projects

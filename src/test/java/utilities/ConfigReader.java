@@ -1,12 +1,12 @@
 package utilities;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
+    
 	
     private static Properties properties;
     private final static String propertyFilePath = ".\\config\\config.properties";   
@@ -28,8 +28,8 @@ public class ConfigReader {
             e.printStackTrace();
         }
     } 
-   
-    
+
+  
   
     
     //DashboardURL
@@ -42,6 +42,17 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Username not specified in the Config.properties file");
     }
+
+        //DashboardURL
+    
+        public static String baseUrl()
+        {    	
+             String BaseURL=properties.getProperty("baseurl");
+             if (BaseURL != null)
+                return BaseURL;
+             else 
+                 throw new RuntimeException("Username not specified in the Config.properties file");
+        }
     
     // UserName
     public static String userName()
@@ -81,6 +92,24 @@ public class ConfigReader {
             return loginurl;
         else
             throw new RuntimeException("login not specified in the Config.properties file");
+    }
+
+    public static String SearchProgName()
+    {    	
+    	 String SearchProgName=properties.getProperty("SearchProgName");
+    	 if (SearchProgName != null)
+		    return SearchProgName;
+    	 else 
+    		 throw new RuntimeException("Program name is not specified in the Config.properties file");
+    }
+    //Search Program Description
+    public static String SearchProgDescription()
+    {    	
+    	 String SearchProgDesc=properties.getProperty("SearchProgDesc");
+    	 if (SearchProgDesc != null)
+		    return SearchProgDesc;
+    	 else 
+    		 throw new RuntimeException("Program Description is not specified in the Config.properties file");
     }
 
    
