@@ -13,7 +13,7 @@ Background: Admin gives the correct LMS portal URL
     Scenario: Verify add New Program with title and mandatory field
         When Admin is on Program module11
         Then Admin should see pop up window with title as Program Details
-        And Admin should see red * mark beside mandatory field Name
+        And Admin should see red * mark beside mandatory field Name1
 
 		@verifyingEmptyForm
     Scenario: Verify empty form submission

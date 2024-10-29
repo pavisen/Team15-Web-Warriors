@@ -43,7 +43,7 @@ public class ProgramAddSteps {
 
 	}
 
-	@Then("Admin should see red * mark beside mandatory field Name")
+	@Then("Admin should see red * mark beside mandatory field Name1")
 	public void admin_should_see_red_mark_beside_mandatory_field_name() {
 
 		pam.assertAstriskMandatoryFields();
