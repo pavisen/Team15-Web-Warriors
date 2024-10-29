@@ -1,15 +1,11 @@
-@ProgramNavFeature
-Feature: Add Program feature
+@ProgramFeature
+Feature: Add Program Navigation feature
 Background: Admin gives the correct LMS portal URL
 
 Given Admin Gives the valid LMS portal URL
 And Admin is in login Page
 When Admin enter valid credentials  and clicks login button 
 Then Admin should land on dashboard page  
- 
-
-
-
 
     # Navigation
     @navigatingToProgram
@@ -17,6 +13,7 @@ Then Admin should land on dashboard page
         Given Admin is on dashboard page after Login
         When Admin clicks Program on the navigation bar
         Then  Admin should be navigated to Program module
+        
    # MenuBar
     @verifyingProgramLinks
     Scenario: Verify any broken links on program page
@@ -86,21 +83,26 @@ Then Admin should land on dashboard page
         Given Admin is on dashboard page after Login
         When Admin clicks Program on the navigation bar
         Then Admin should see the sort arrow icon beside to each column header except Edit and Delete
-@verifyingEditAndDeleteicon
+		@verifyingEditAndDeleteicon
        Scenario: Verify edit and delete icon in manage program
         Given Admin is on dashboard page after Login
         When Admin clicks Program on the navigation bar
         Then Admin should see the Edit and Delete buttons on each row of the data table
-@verifyingPaginationIcons
+		@verifyingPaginationIcons
     Scenario: Verify pagination icons below data table in manage program
         Given Admin is on dashboard page after Login
         When Admin clicks Program on the navigation bar
         Then Admin should see the text as Showing x to y of z entries along with Pagination icon below the table.x- starting record number on that page y-ending record number on that page z-Total number of records
 
-@verifyingFooterMessage
+		@verifyingFooterMessage
     Scenario: Verify footer message in manage program
         Given Admin is on dashboard page after Login
         When Admin clicks Program on the navigation bar
         Then Admin should see the footer as In total there are z programs.z- Total number of records
-
+        
+	 @verifyingAddedProgram
+	 Scenario: Verify added Program is created
+	     Given Admin is on Program module11
+	     When Admin searches with newly created Program Name
+	     Then Records of the newly created  Program Name is displayed and match the data entered
     

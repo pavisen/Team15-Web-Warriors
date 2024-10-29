@@ -22,9 +22,13 @@ public class ProgramNavSteps {
 
     @Given("Admin is on program page")
     public void admin_is_on_program_page() {
-
+    	 pnv.clickProgram();
+    	 
     }
-
+	@When("Admin searches with newly created Program Name")
+	public void admin_searches_with_newly_created_program_name() {
+		pnv.searchProgramName(); 
+	}
     @When("Admin clicks Program on the navigation bar")
     public void admin_clicks_program_on_the_navigation_bar() {
         pnv.clickProgram();
@@ -133,4 +137,12 @@ public class ProgramNavSteps {
         pnv.getTotalProgramCountFromFooter();
 
     }
+	@Given("Admin is on Program module11")
+	public void admin_is_on_program_module11() {
+		pnv.clickProgram();
+	}
+	@Then("Records of the newly created  Program Name is displayed and match the data entered")
+	public void records_of_the_newly_created_program_name_is_displayed_and_match_the_data_entered() {
+	    pnv.verifyProgramName();
+	}
 }

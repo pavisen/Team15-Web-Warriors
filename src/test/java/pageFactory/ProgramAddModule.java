@@ -2,175 +2,219 @@ package pageFactory;
 
 import java.util.List;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-
+import org.testng.Assert;
 
 import drivers.DriverFactory;
 import utilities.ConfigReader;
 import utilities.Utility_Methods;
 
-
 public class ProgramAddModule {
-	public static WebDriver driver = DriverFactory.getDriver();
-     public static ConfigReader configReader = new ConfigReader();
+    // public static WebDriver driver = DriverFactory.getDriver();
+    public WebDriver driver = DriverFactory.getDriver();
+    public static ConfigReader configReader = new ConfigReader();
 
-	@FindBy(xpath = "//button/span[text()='Program']")
-    WebElement program;
-	 @FindBy(xpath = "//button[text()='Add New Program']")
-	    WebElement addNewProgramBtn;
-        @FindBy(xpath = "//span[@class='p-dialog-title ng-tns-c168-22 ng-star-inserted']")
-        public WebElement programDetails;
+    @FindBy(xpath = "//div/button[@id='program']")
+    WebElement ProgramModule;
+    // @FindBy(xpath="//div//div//div//button[@class='mat-focus-indicator
+    // mat-menu-item ng-tns-c225-2']")
+    @FindBy(xpath = "//div/button[text()='Add New Program']")
+    WebElement addnewProgBtn;
+    @FindBy(xpath = "//*[@class='ng-trigger ng-trigger-animation ng-tns-c168-9 p-fluid p-dialog p-component p-dialog-draggable p-dialog-resizable ng-star-inserted']")
+    WebElement PopUpWindow;
+
+    @FindBy(xpath = "//span[contains(@class,'p-dialog-title')]")
+    public WebElement programDetails;
+    @FindBy(xpath = ("//label[@for='programName']//span[1]"))
+    public WebElement mandatoryField;
+
     @FindBy(id = "programName")
-     public WebElement inputName;
+    public WebElement inputName;
     @FindBy(id = "programDescription")
     public WebElement inputDescription;
     @FindBy(id = "saveProgram")
     public WebElement saveButton;
-    @FindBy(xpath = "//span[@class='p-dialog-header-close-icon ng-tns-c132-3 pi pi-times']")
+    @FindBy(xpath = "//span[contains(@class,'p-dialog-header-close-icon')]")
     public WebElement xButon;
     @FindBy(xpath = "//div[@class='p-radiobutton-box']")
     public List<WebElement> radioButtons;
-    @FindBy(xpath = "//div[@class='p-radiobutton-box'][1]")
+    @FindBy(xpath = "//p-radiobutton[@ng-reflect-input-id='Active']")
     public WebElement active;
-    @FindBy(xpath = "//div[@class='p-radiobutton-box']")
+    @FindBy(xpath = "//p-radiobutton[@ng-reflect-input-id='Inactive']")
     public WebElement inactive;
     @FindBy(xpath = "//small[@class='p-invalid ng-star-inserted']")
     public List<WebElement> errorMessage;
-   @FindBy(xpath = "//*[text()='Successful']")
+    @FindBy(xpath = "//div[contains(text(),'Program Created Successfully')]")
     public WebElement successprogramMessage;
-    @FindBy(xpath = "//span[@class='p-button-icon pi pi-pencil'][1]")
-    public WebElement editButton;
+
     @FindBy(id = "filterGlobal")
     WebElement searchBar;
     @FindBy(xpath = "//span[text()='Save']")
-    public WebElement editSave;
-    @FindBy(xpath = "//button[@class='p-toast-icon-close p-link ng-tns-c90-12 p-ripple ng-star-inserted']")
     public WebElement xSuccessButton;
-    @FindBy(xpath = "/span[@class='p-dialog-header-close-icon ng-tns-c168-9 pi pi-times']")
+    @FindBy(xpath = "//span[text()='Save']")
+
     public WebElement xButton;
+
     @FindBy(xpath = "//span[text()='Cancel']")
     public WebElement cancelButton;
-    
-    
+
     public ProgramAddModule() {
         PageFactory.initElements(driver, this);
     }
 
-    
-    public void clickProgram() {
-    	program.click();
-
-    }
-    //Admin clicks on "New Program" under the "Program" menu bar
-    public void addNewProgram() {
-    	addNewProgramBtn.click();
-    }
-
-//Admin should see pop up window for program details
-    // public PopUpWindow getPopUpWindow() {
-    //     return new PopUpWindow();
+    // public String getProgramurl() {
+    // String url= driver.getCurrentUrl();
+    // System.out.println("programurl "+url);
+    // return url;
     // }
 
-//Admin should see window title as "Program Details"
-public String programDetails() {
-    return Utility_Methods.getElementText(programDetails);
+    // public void clickProgram() {
+    // program.click();
 
-}
+    // }
+    public void admin_click_program_module_link_Dashboard_1() {
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(5));
+        ProgramModule.click();
 
-    //Admin should see red "*" mark beside mandatory field "Name"
-public void mandatoryField() {      
-}
-
-//Admin clicks save button without entering mandatory 
-public void clickwithoutSaveButton() {
-    saveButton.click();
-}
-
-//Admin gets message '<field> is required'
-public String getErrorMessage() {
-    return Utility_Methods.getElementText(errorMessage.get(0));
-}
-
-//Admin can see Program Details form disappears
-public void programDetailsDisappear() {
-    xButon.click();
-}
-
-//Admin can see the text entered
-public void inputName(){
-    inputName.sendKeys(ConfigReader.SearchProgName());
-    
-}
-//Admin can see the text entered in description box
-public void inputDescription(){
-    inputDescription.sendKeys(ConfigReader.SearchProgDescription());
-    
-}
-//Admin can see 'Active/Inactive' status selected
-public void selectStatus(){
-    active.click();
-}
-//Admin enter valid details for mandatory fields and Click on save button
-public void clickWithSaveButton(){
-    saveButton.click();
-}
-//Admin gets message 'Successful Program created'
-public String getSuccessMessage(){
-    return Utility_Methods.getElementText(successprogramMessage);
-}
-
-//Admin Click on cancel button
-public void clickCancelButton(){
-    cancelButton.click();
-}
-//Admin can see program details form disappear
-public void cancelButton(){
-    cancelButton.click();
-}
-
-
-//Admin searches with newly created "Program Name"
-public void searchProgramName(){
-    searchBar.sendKeys(ConfigReader.SearchProgName());
-}
-
-//Records of the newly created  "Program Name" is displayed and match the data entered
-public void verifyProgramName(){
-    
-}
-
-
-//Admin Click on "X" button
-public void clickXButton(){
-    xButton.click();
-}
-//Admin can see program details form disappear
-public void xButton(){      
-    xButton.click();    
-}
-
-    
-    
-    
-   
-   
-    public void clickSaveButton(){
-        saveButton.click();
     }
+
+    // Admin clicks on "New Program" under the "Program" menu bar
+    public void addNewProgram() throws InterruptedException {
+        // ProgramModule.click();
+        Utility_Methods.webElement_Click(addnewProgBtn);
+    }
+
+    // Admin should see pop up window for program details
+    public boolean PopUpWindow() {
+        return PopUpWindow.isDisplayed();
+    }
+
+    // Admin should see window title as "Program Details"
+    public void assertProgramDetailsTitle() {
+        Utility_Methods.assertText(programDetails, "Program Details", "Program Details is not displayed");
+
+    }
+
+    // Admin should see red "*" mark beside mandatory field "Name"
+    public void assertAstriskMandatoryFields() {
+        Utility_Methods.assertText(mandatoryField, "*", "Mandatory field is not displayed for Name");
+    }
+
+    // Admin clicks save button without entering mandatory
+    public void clickSaveButton() {
+        Utility_Methods.webElement_Click(saveButton);
+    }
+
+    // Admin gets message '<field> is required'
+    public void assertErrorMessage() {
+        Assert.assertEquals(errorMessage.size(), 3);
+
+    }
+
+    // Admin can see Program Details form disappears
+    public void programDetailsDisappear() {
+
+    }
+
+    // Admin can see the text entered
+    public void enterInputName() {
+        Utility_Methods.webSendKeys(inputName, ConfigReader.SearchProgName()+Utility_Methods.random5LetterWord());
+    }
+
+    public String getinputName() {
+        return Utility_Methods.getElementAttribute(inputName,"ng-reflect-model");
+    }
+
+    // Admin can see the text entered in description box
+    public void enterInputDescription() {
+        Utility_Methods.webSendKeys(inputDescription, ConfigReader.SearchProgDescription()+Utility_Methods.random5LetterWord());
+    }
+
+    public String getInputDescription() {
+        return Utility_Methods.getElementAttribute(inputDescription,"ng-reflect-model");
+    }
+
+    // Admin can see 'Active/Inactive' status selected
+    public void selectActiveStatus() {
+        active.click();
+    }
+
+    // Admin can see 'Active/Inactive' status selected
+    public void selectInactiveStatus() {
+        inactive.click();
+    }
+
+    public String getActiveStatus() {
+        return Utility_Methods.getElementAttribute(active,"ng-reflect-value");
+    }
+
+    public String getInactiveStatus() {
+    	  return Utility_Methods.getElementAttribute(inactive,"ng-reflect-value");
+    }
+    // Admin en
+    // Admin enter valid details for mandatory fields and Click on save button
+
+    // Admin gets message 'Successful Program created'
+    public void getSuccessMessage( ) {
+    	try {
+    		Thread.sleep(1000);
+    		// dialog will close and throw exception on accessing the dialog's control
+			cancelButton.isDisplayed();
+		} catch (Exception e) {
+			Assert.assertTrue(true, "Add program is closed");
+			// this means the dialog is closed and info is saved
+			return;
+		}
+		Assert.assertTrue(false, "Add program is still displaying and not saved");
+    }
+
+    // Admin Click on cancel button
+    public void clickCancelButton() {
+        cancelButton.click();
+
+    }
+
+	// Admin can see program details form disappear
+	public void isAddProgramDisappeared() {
+		try {
+			//this is to make sure that cancel button is disappeared
+			Thread.sleep(1000);
+			cancelButton.isDisplayed();
+		} catch (Exception e) {
+			Assert.assertTrue(true, "Add program is not displayed");
+			return;
+		}
+		Assert.assertTrue(false, "Add program is still displaying");
+	}
+
+ 
+
     
+
+    // Admin Click on "X" button
+    public void clickXButton() {
+    	Utility_Methods.webElement_Click(xButon);
+    }
+
+    // Admin can see program details form disappear
+    public void xButton() {
+    	Utility_Methods.webElement_Click(xButon);
+    }
+
+    public void verifyProgramPopup() {
     
-    
-    
-    
+    }
+
+    public void validateInput() {
     	
+        String inputDescription2 = getInputDescription();
+        String getinputName = getinputName();
+		Assert.assertTrue(inputDescription2.startsWith(configReader.SearchProgDescription()),"Description is not mentioned");
+		Assert.assertTrue(getinputName.startsWith(configReader.SearchProgName()),"Program name is not matching");
+		
     }
-
-
-
-    
-
+}
