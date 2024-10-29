@@ -1,20 +1,18 @@
 package utilities;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
+    
 	
     private static Properties properties;
-    private final static String propertyFilePath = ".\\config\\config.properties";   
-    
+    private final static String propertyFilePath = ".\\config\\config.properties";    
     
     
     public static void readConfig() throws Throwable {
-
         InputStream fis;
         fis = ConfigReader.class.getClassLoader().getResourceAsStream(propertyFilePath);
         properties = new Properties();
@@ -30,6 +28,15 @@ public class ConfigReader {
     } 
    
     
+    // Invalid BaseURL
+    public static String Invalid_BaseURL()
+    {
+    	String InvalidBaseURL=properties.getProperty("InvalidBaseURL");
+   	 if (InvalidBaseURL != null)
+		    return InvalidBaseURL;
+   	 else 
+   		 throw new RuntimeException("Username not specified in the Config.properties file");
+    }
   
     
     //DashboardURL
@@ -42,6 +49,17 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Username not specified in the Config.properties file");
     }
+
+        //DashboardURL
+    
+        public static String baseUrl()
+        {    	
+             String BaseURL=properties.getProperty("baseurl");
+             if (BaseURL != null)
+                return BaseURL;
+             else 
+                 throw new RuntimeException("Username not specified in the Config.properties file");
+        }
     
     // UserName
     public static String userName()
@@ -72,8 +90,6 @@ public class ConfigReader {
         else
             throw new RuntimeException("Browser Not Specified in Config.Properties file");
     }
-
-
     // Signin URL
     public static String loginPage() {
         String loginurl = properties.getProperty("baseurl");
@@ -83,6 +99,7 @@ public class ConfigReader {
             throw new RuntimeException("login not specified in the Config.properties file");
     }
 
+ 
    
 
     public static String getexcelfilepath() {
@@ -92,9 +109,45 @@ public class ConfigReader {
         else
             throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
     }
-
-  
-
+    
+    //Program Name
+    public static String GetEditProgramName()
+    {    	
+    	 String EditProgramName=properties.getProperty("EditProgramName");
+    	 if (EditProgramName != null)
+		    return EditProgramName;
+    	 else 
+    		 throw new RuntimeException("EditProgram not specified in the Config.properties file");
+    }
+    
+    //Edit_Program Description
+    public static String GetEditProgramDescription()
+    {    	
+    	 String EditProgDesc=properties.getProperty("EditProgramDescription");
+    	 if (EditProgDesc != null)
+		    return EditProgDesc;
+    	 else 
+    		 throw new RuntimeException("EditDescription not specified in the Config.properties file");
+    }
+    
+  //Search Program Name
+    public static String SearchProgName()
+    {    	
+    	 String SearchProgName=properties.getProperty("SearchProgName");
+    	 if (SearchProgName != null)
+		    return SearchProgName;
+    	 else 
+    		 throw new RuntimeException("Program name is not specified in the Config.properties file");
+    }
+    //Search Program Description
+    public static String SearchProgDescription()
+    {    	
+    	 String SearchProgDesc=properties.getProperty("SearchProgDesc");
+    	 if (SearchProgDesc != null)
+		    return SearchProgDesc;
+    	 else 
+    		 throw new RuntimeException("Program Description is not specified in the Config.properties file");
+    }
 
 
     // public static String geturl(String pagename) {

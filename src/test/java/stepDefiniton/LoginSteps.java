@@ -31,12 +31,13 @@ import utilities.ConfigReader;
 import utilities.ExcelReader;
 
 public class LoginSteps {
-	public  WebDriver driver; 	
-	String title2;
-	//String Excelpath=ConfigReader.getexcelfilepath();	
+
+	public  WebDriver driver;	
 	WebDriverWait wait;
     LoginPage loginPage = new LoginPage();
-    ExcelReader exelread= new ExcelReader();
+    ExcelReader exelread= new ExcelReader();	
+
+	
     
     @Given("Admin Gives the valid LMS portal URL")
     public void admin_gives_the_valid_lms_portal_url() {    	
@@ -44,6 +45,12 @@ public class LoginSteps {
   	    
     }
 
+    
+    @Then("Admin should land on the LMS poral")
+    public void admin_should_land_on_the_lms_poral() {
+    	Assert.assertEquals(loginPage.LMSportalURLValidation(),ConfigReader.loginPage() ); 
+    }
+    
     @Given("Admin is in login Page")
     public void admin_is_in_login_page() {
     	
@@ -62,11 +69,8 @@ public class LoginSteps {
 
     
     @Then("Admin should land on dashboard page")
-    public void admin_should_land_on_dashboard_page() {
-    	WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("program")));   	
-   	     title2 = DriverFactory.getDriver().getCurrentUrl();     	 
-    	Assert.assertEquals(title2, ConfigReader.DashboardURL());  	
+    public void admin_should_land_on_dashboard_page() {    	    	 
+    	Assert.assertEquals(loginPage.DashboardValidation(), ConfigReader.DashboardURL());  	
     }
     
     
@@ -78,13 +82,10 @@ public class LoginSteps {
     	loginPage.clickLogin();    	
     }
 
-    
-    @Then("Error message please check Adminname\\/password")
-    public void error_message_please_check_adminname_password() {
-    	
-    	System.out.println(loginPage.loginErrormessage());
-       assertEquals(loginPage.loginErrormessage(),"please check Adminname/password");
-    	
+   
+    @Then("Error message please {string} {string} check Adminname\\/password")
+    public void error_message_please_check_adminname_password(String Sheet, String TestCase) throws IOException {    	
+    	assertEquals(loginPage.loginErrormessage(),exelread.getTestData(Sheet, TestCase, "ErrorMessage"));    	
     }
     
    
@@ -92,14 +93,17 @@ public class LoginSteps {
 
     @When("Admin enter valid credentials  and clicks login button through keyboard")
     public void admin_enter_valid_credentials_and_clicks_login_button_through_keyboard() {
-    	loginPage.login_usingKeyBoardAction();   	
+    	loginPage.login_usingKeyBoardAction();  	
     	
     }
-
+    
+    
+// verify login button action through mouse
+    
     @When("Admin enter valid credentials  and clicks login button through mouse")
     public void admin_enter_valid_credentials_and_clicks_login_button_through_mouse() {
         
-    	
+    	loginPage.login_UsingmouseActions();
     	
     }
   
