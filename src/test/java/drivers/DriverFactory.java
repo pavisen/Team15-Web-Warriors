@@ -55,23 +55,23 @@ public class DriverFactory {
 
     // Get the WebDriver instance
     public static WebDriver getDriver() {
-        if (driver.get() == null) {
-        	
-            throw new RuntimeException("WebDriver is not initialized. Please call initializeWebDriver() first.");
-            
-        }
+//        if (driver.get() == null) {
+//        	
+//            throw new RuntimeException("WebDriver is not initialized. Please call initializeWebDriver() first.");
+//            
+//        }
         return driver.get();
     }
-    
-    public static ConfigReader configReader() {
-        return configReader();
-    }
+//    
+//    public static ConfigReader configReader() {
+//        return configReader();
+//    }
 
     // Close the WebDriver
-    public  void closeDriver() {
-        if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove(); // Removes driver from ThreadLocal to clean up resources
-        }
-    }
+//    public  void closeDriver() {
+//        if (driver.get() != null) {
+//            driver.get().quit();
+//            driver.remove(); // Removes driver from ThreadLocal to clean up resources
+///       }
+//    }
 }

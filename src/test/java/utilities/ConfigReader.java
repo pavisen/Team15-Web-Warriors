@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,18 +8,24 @@ import java.util.Properties;
 
 public class ConfigReader {
     private static Properties properties;
-    private final static String propertyFilePath = ".\\config\\config.properties";
+    //private final static String propertyFilePath = "./src/test/resources/config/config.properties";
+    private final static String propertyFilePath = "./config/config.properties";
 
     public static void readConfig() throws Throwable {
 
         InputStream fis;
         fis = ConfigReader.class.getClassLoader().getResourceAsStream(propertyFilePath);
+    	
         properties = new Properties();
+		//FileInputStream fis = new FileInputStream(propertyFilePath);
+
         if (fis == null) {
+        	
             throw new FileNotFoundException("Property file '" + propertyFilePath + "' not found in the classpath");
         }
         try {
-            properties.load(fis);
+        	System.out.println("Iam loading properties!!!!");
+            properties.load(fis);	
             fis.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +52,14 @@ public class ConfigReader {
         else
             throw new RuntimeException("login not specified in the Config.properties file");
     }
-
+    public static String getHomePageTitle() {
+		String url = properties.getProperty("homePageTitle");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("homeURL"
+					+ " not specified in the Configuration.properties file.");
+	}
    
 
     public static String getexcelfilepath() {
@@ -56,8 +70,12 @@ public class ConfigReader {
             throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
     }
 
-  
-
+  public static String getValidDetails(String detail)
+  {
+	  String validData = properties.getProperty("detail");
+	return null;
+	  
+  }
 
 
     // public static String geturl(String pagename) {

@@ -175,6 +175,11 @@
       </plugin>
     </plugins>
   </pluginManagement>
+  <testResources>
+              <testResource>
+                  <directory>src/test/resources</directory>
+              </testResource>
+          </testResources>
 </build>
  <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
