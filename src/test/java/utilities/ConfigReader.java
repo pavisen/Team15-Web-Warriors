@@ -1,7 +1,6 @@
 package utilities;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -27,11 +26,7 @@ public class ConfigReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    } 
-   
-    
-  
-    
+    }   
     //DashboardURL
     
     public static String DashboardURL()
@@ -42,6 +37,15 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Username not specified in the Config.properties file");
     }
+    
+    //DashboardClassURL
+	public static String dashboardclassurl() {
+		String DashboardclassURL=properties.getProperty("dashboardclassurl");
+   	 if (DashboardclassURL != null)
+		    return DashboardclassURL;
+   	 else 
+   		 throw new RuntimeException("Username not specified in the Config.properties file");
+	}
     
     // UserName
     public static String userName()
@@ -62,6 +66,15 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Password not specified in the Config.properties file");
     }
+    // BatchName
+    public static String BatchName()
+    {    	
+    	 String batchname=properties.getProperty("BATCHNAME");
+    	 if (batchname != null)
+		    return batchname;
+    	 else 
+    		 throw new RuntimeException("Batchname not specified in the Config.properties file");
+    }
 
     // Browser Type
     public static String browserType() {
@@ -72,8 +85,6 @@ public class ConfigReader {
         else
             throw new RuntimeException("Browser Not Specified in Config.Properties file");
     }
-
-
     // Signin URL
     public static String loginPage() {
         String loginurl = properties.getProperty("baseurl");
@@ -82,9 +93,6 @@ public class ConfigReader {
         else
             throw new RuntimeException("login not specified in the Config.properties file");
     }
-
-   
-
     public static String getexcelfilepath() {
         String excelfilelpath = properties.getProperty("excelFilePath");
         if (excelfilelpath != null)
@@ -93,7 +101,12 @@ public class ConfigReader {
             throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
     }
 
-  
+    public static void setBrowserType(String browser) {
+        System.out.println("----------------------------Setting browser type to: " + browser);
+        properties.setProperty("browser", browser);
+    }
+
+}
 
 
 
@@ -105,8 +118,4 @@ public class ConfigReader {
     //         throw new RuntimeException(pagename + " url not specified in the Configuration.properties file.");
     // }
 
-    public static void setBrowserType(String browser) {
-        System.out.println("----------------------------Setting browser type to: " + browser);
-        properties.setProperty("browser", browser);
-    }
-}
+    

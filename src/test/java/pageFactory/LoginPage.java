@@ -50,6 +50,17 @@ public class LoginPage {
 		driver.get(baseurl);
 	}
 	
+	 public void readDataFromSheet(String sheetName, Integer rowNumber) throws IOException, InvalidFormatException {
+	        ExcelReader reader = new ExcelReader();
+	        List<Map<String, String>> testdata = reader.getData("src/test/resources/TestData/Team15-TestData.xlsx", sheetName);
+	        userNameExcelValue = testdata.get(rowNumber).get("username");
+	        passwordExcelValue = testdata.get(rowNumber).get("password");
+	        username.sendKeys(userNameExcelValue);
+	        password.sendKeys(passwordExcelValue);
+	        loginbtn.click();
+	        
+	    }
+
 	public void enterUsername(String userName) {
 
 		username.sendKeys(userName);
