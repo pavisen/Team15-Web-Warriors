@@ -7,4 +7,5 @@ target/
 /.settings
 /.classpath
 /.vscode
-/.projects
+.projects
+.classpath
