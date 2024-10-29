@@ -18,15 +18,70 @@ import drivers.DriverFactory;
 public class Utility_Methods {
 
     //Utility for methods
-    public  WebDriver driver = DriverFactory.getDriver();
+    public  static WebDriver driver = DriverFactory.getDriver();
     public  String ExcelPath = ConfigReader.getexcelfilepath();
     WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
     
     public  void waitForElement(WebElement element) {
-
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
-
-    }       
+    }         
+    
+    
+    
+    public static boolean webSendKeys(WebElement element, String text) {
+		try {
+			WebElement ele = new WebDriverWait(driver, Duration.ofSeconds(10)).
+					until(ExpectedConditions.visibilityOf(element));
+		
+				if(ele.isEnabled()) {
+					try {
+						ele.clear();
+						ele.sendKeys(text);	
+						return true;
+					}
+					catch(Exception e) {
+						e.printStackTrace();
+						return false;
+					}	
+				}
+				else {
+					throw new Exception("Element is not enabled");
+				}
+			}
+			
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+    
+    
+    
+    public static boolean webElement_Click(WebElement element) {
+		try {
+			WebElement ele_toclick = new WebDriverWait(driver, Duration.ofSeconds(10)).
+					until(ExpectedConditions.visibilityOf(element));
+				
+				if(ele_toclick.isEnabled() && ele_toclick.isDisplayed()) {
+					try {
+						ele_toclick.click();
+						return true;
+					}
+					catch(Exception e) {
+						e.printStackTrace();
+						return false;
+					}	
+				}
+				else {
+					throw new Exception(element+" Element is not enabled or clickable or displayed");
+				}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+    
 
     public String getResultfromExcel(String sheetname, int rownumber) throws InvalidFormatException, IOException {
         ExcelReader reader = new ExcelReader();
