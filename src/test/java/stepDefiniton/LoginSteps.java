@@ -28,7 +28,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageFactory.LoginPage;
 import utilities.ConfigReader;
-import utilities.ExcelReader;
+
 
 public class LoginSteps {
 
@@ -108,6 +108,15 @@ public class LoginSteps {
     }
   
 
+    @When("Enter username and password, click on login button")
+    public void enter_username_and_password_click_on_login_button() {
     
+    }
+    
+    @Then("User navigates to DashBoard Page")
+    public void user_navigates_to_dash_board_page() {
+    
+    }
+      
 }
 

@@ -61,6 +61,15 @@ public class ConfigReader {
                  throw new RuntimeException("Username not specified in the Config.properties file");
         }
     
+    //DashboardClassURL
+	public static String dashboardclassurl() {
+		String DashboardclassURL=properties.getProperty("dashboardclassurl");
+   	 if (DashboardclassURL != null)
+		    return DashboardclassURL;
+   	 else 
+   		 throw new RuntimeException("Username not specified in the Config.properties file");
+	}
+    
     // UserName
     public static String userName()
     {    	
@@ -79,6 +88,15 @@ public class ConfigReader {
 		    return loginPassword;
     	 else 
     		 throw new RuntimeException("Password not specified in the Config.properties file");
+    }
+    // BatchName
+    public static String BatchName()
+    {    	
+    	 String batchname=properties.getProperty("BATCHNAME");
+    	 if (batchname != null)
+		    return batchname;
+    	 else 
+    		 throw new RuntimeException("Batchname not specified in the Config.properties file");
     }
 
     // Browser Type
@@ -158,8 +176,4 @@ public class ConfigReader {
     //         throw new RuntimeException(pagename + " url not specified in the Configuration.properties file.");
     // }
 
-    public static void setBrowserType(String browser) {
-        System.out.println("----------------------------Setting browser type to: " + browser);
-        properties.setProperty("browser", browser);
-    }
-}
+    
