@@ -23,14 +23,12 @@ public class Utility_Methods {
     WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
     
     public  void waitForElement(WebElement element) {
-
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
-
-    }   
+    }         
     
-    //from Arpana
-      //from Arpana's
-      public static boolean webSendKeys(WebElement element, String text) {
+    
+    
+    public static boolean webSendKeys(WebElement element, String text) {
 		try {
 			WebElement ele = new WebDriverWait(driver, Duration.ofSeconds(10)).
 					until(ExpectedConditions.visibilityOf(element));
@@ -56,8 +54,10 @@ public class Utility_Methods {
 		}
 		return false;
 	}
-
-public static boolean webElement_Click(WebElement element) {
+    
+    
+    
+    public static boolean webElement_Click(WebElement element) {
 		try {
 			WebElement ele_toclick = new WebDriverWait(driver, Duration.ofSeconds(10)).
 					until(ExpectedConditions.visibilityOf(element));
