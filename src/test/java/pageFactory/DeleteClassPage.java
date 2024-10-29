@@ -25,43 +25,51 @@ public class DeleteClassPage {
 	ManageClassPage manageClassPage = new ManageClassPage();
 	AddClassPage addClassPage = new AddClassPage();
 	EditClassPage editClassPage = new EditClassPage();
-	
-	@FindBy(xpath = "//div[@ng-reflect-ng-style='[object Object]']")public  WebElement DeletionAlert;
-	@FindBy(xpath = "//table[@role='grid']/tbody/tr/td[8]/div/span/button[2]") public  WebElement deleteEACHClassButton;
-	@FindBy(xpath = "//button[@ng-reflect-ng-class='p-confirm-dialog-reject']")public  WebElement DeletionAlertNO;
-	@FindBy(xpath = "//button[@ng-reflect-ng-class='p-confirm-dialog-accept']")public  WebElement DeletionAlertYES;
-	@FindBy(xpath = "//div[contains(@class,'p-dialog-header-icons ng-tns-c204-91')]/button")public WebElement DeletionAlertClose;
+
+	@FindBy(xpath = "//span[text()='Confirm']")
+	public WebElement DeletionAlert;
+	@FindBy(xpath = "//span[text()='Yes']")
+	public WebElement DeletionAlertYES;
+	@FindBy(xpath = "//span[text()='No']")
+	public WebElement DeletionAlertNO;
+	@FindBy(xpath = "//button[contains(@class,'ng-tns-c204-8 p-dialog-header-icon p-dialog-header-close p-link ng-star-inserted')]")
+	public WebElement DeletionAlertClose;
+	@FindBy(xpath = "//table[@role='grid']/tbody/tr/td[8]/div/span/button[2]")
+	public WebElement deleteEACHClassButton;
 	@FindBy(xpath = "//div[text()='Class Deleted']")
 	public WebElement SuccessMsg_deleteClass2;
-	
-	
-WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	
+//	@FindBy(xpath = "//div[@ng-reflect-ng-style='[object Object]']")public  WebElement DeletionAlert;	
+//	@FindBy(xpath = "//button[@ng-reflect-ng-class='p-confirm-dialog-reject']")public  WebElement DeletionAlertNO;
+//	@FindBy(xpath = "//button[@ng-reflect-ng-class='p-confirm-dialog-accept']")public  WebElement DeletionAlertYES;
+//	@FindBy(xpath = "//div[contains(@class,'p-dialog-header-icons ng-tns-c204-91')]/button")public WebElement DeletionAlertClose;
 
-	public  DeleteClassPage() {
-	
+	WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+	public DeleteClassPage() {
+
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void deleteClassDetailsWindow() throws InterruptedException {
 		editClassPage.searchClass(config.BatchName());
 		System.out.println("Before Clicking delete");
-		 Thread.sleep(1000);
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
-		 js.executeScript("arguments[0].click();", deleteEACHClassButton);	
-		//util.webElement_Click(deleteEACHClassButton);
-		
+		Thread.sleep(1000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", deleteEACHClassButton);
+		// util.webElement_Click(deleteEACHClassButton);
+
 	}
-	
+
 	public void checkDelete_alertbox() {
-		
+
 		util.isElementDisplayed(DeletionAlert);
 	}
+
 	public String getDeleteMessageText() throws InterruptedException {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		String Message2 = SuccessMsg_deleteClass2.getText();
 		System.out.println("Actual message appeared on the screen is: " + Message2);
 		return Message2;
 	}
-	
+
 }

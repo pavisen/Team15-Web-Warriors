@@ -16,6 +16,7 @@ public class ProgramAddModule {
     // public static WebDriver driver = DriverFactory.getDriver();
     public WebDriver driver = DriverFactory.getDriver();
     public static ConfigReader configReader = new ConfigReader();
+    Utility_Methods util = new Utility_Methods();
 
     @FindBy(xpath = "//div/button[@id='program']")
     WebElement ProgramModule;
@@ -85,7 +86,7 @@ public class ProgramAddModule {
     // Admin clicks on "New Program" under the "Program" menu bar
     public void addNewProgram() throws InterruptedException {
         // ProgramModule.click();
-        Utility_Methods.webElement_Click(addnewProgBtn);
+        util.webElement_Click(addnewProgBtn);
     }
 
     // Admin should see pop up window for program details
@@ -95,18 +96,18 @@ public class ProgramAddModule {
 
     // Admin should see window title as "Program Details"
     public void assertProgramDetailsTitle() {
-        Utility_Methods.assertText(programDetails, "Program Details", "Program Details is not displayed");
+        util.assertText(programDetails, "Program Details", "Program Details is not displayed");
 
     }
 
     // Admin should see red "*" mark beside mandatory field "Name"
     public void assertAstriskMandatoryFields() {
-        Utility_Methods.assertText(mandatoryField, "*", "Mandatory field is not displayed for Name");
+        util.assertText(mandatoryField, "*", "Mandatory field is not displayed for Name");
     }
 
     // Admin clicks save button without entering mandatory
     public void clickSaveButton() {
-        Utility_Methods.webElement_Click(saveButton);
+        util.webElement_Click(saveButton);
     }
 
     // Admin gets message '<field> is required'
@@ -122,20 +123,20 @@ public class ProgramAddModule {
 
     // Admin can see the text entered
     public void enterInputName() {
-        Utility_Methods.webSendKeys(inputName, ConfigReader.SearchProgName()+Utility_Methods.random5LetterWord());
+        util.webSendKeys(inputName, ConfigReader.SearchProgName()+Utility_Methods.random5LetterWord());
     }
 
     public String getinputName() {
-        return Utility_Methods.getElementAttribute(inputName,"ng-reflect-model");
+        return util.getElementAttribute(inputName,"ng-reflect-model");
     }
 
     // Admin can see the text entered in description box
     public void enterInputDescription() {
-        Utility_Methods.webSendKeys(inputDescription, ConfigReader.SearchProgDescription()+Utility_Methods.random5LetterWord());
+        util.webSendKeys(inputDescription, ConfigReader.SearchProgDescription()+Utility_Methods.random5LetterWord());
     }
 
     public String getInputDescription() {
-        return Utility_Methods.getElementAttribute(inputDescription,"ng-reflect-model");
+        return util.getElementAttribute(inputDescription,"ng-reflect-model");
     }
 
     // Admin can see 'Active/Inactive' status selected
@@ -149,11 +150,11 @@ public class ProgramAddModule {
     }
 
     public String getActiveStatus() {
-        return Utility_Methods.getElementAttribute(active,"ng-reflect-value");
+        return util.getElementAttribute(active,"ng-reflect-value");
     }
 
     public String getInactiveStatus() {
-    	  return Utility_Methods.getElementAttribute(inactive,"ng-reflect-value");
+    	  return util.getElementAttribute(inactive,"ng-reflect-value");
     }
     // Admin en
     // Admin enter valid details for mandatory fields and Click on save button
@@ -197,12 +198,12 @@ public class ProgramAddModule {
 
     // Admin Click on "X" button
     public void clickXButton() {
-    	Utility_Methods.webElement_Click(xButon);
+    	util.webElement_Click(xButon);
     }
 
     // Admin can see program details form disappear
     public void xButton() {
-    	Utility_Methods.webElement_Click(xButon);
+    	util.webElement_Click(xButon);
     }
 
     public void verifyProgramPopup() {

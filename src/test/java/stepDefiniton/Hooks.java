@@ -41,18 +41,18 @@ public class Hooks {
 
 	
 	  
-	//  @After 
-	  public void afterScenario(Scenario scenario) {
-		  DriverFactory driverFactory = new DriverFactory();
-	      driverFactory.closeDriver();
-	  
-	  }
-	 
+//	  @After 
+//	  public void afterScenario(Scenario scenario) {
+//		  DriverFactory driverFactory = new DriverFactory();
+//	      driverFactory.closeDriver();
+//	  
+//	  }
+//	 
 
-	// @AfterAll
-	// public static void after() throws InterruptedException {
-	// Thread.sleep(6000);
-	// driverFactory.closeDriver();
-	// }
+//	 @AfterAll
+//	 public static void after() throws InterruptedException {
+//	 Thread.sleep(6000);
+//	 driverFactory.closeDriver();
+//	 }
 
 }

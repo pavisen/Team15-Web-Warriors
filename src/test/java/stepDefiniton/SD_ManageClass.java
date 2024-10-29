@@ -32,7 +32,7 @@ public class SD_ManageClass {
 
 	@Then("Admin should see the Title  {string} on top of the dashboard page_CM")
 	public void admin_should_see_the_title_on_top_of_the_dashboard_page_cm(String String) {
-		assertTrue(Utility_Methods.validator(manageClasspage.validateTitle(), "LMS"));
+		assertTrue(Utility_Methods.validator(manageClasspage.validateTitle(), "LMS-Learning Management System"));
 	}
 
 	@Then("Admin should see the {string} Header_CM")
