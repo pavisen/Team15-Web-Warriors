@@ -168,7 +168,7 @@ public class ProgramNavModule {
 
 	// Admin should see the heading "LMS - Learning Management System"
 	public void lmsHeading() {
-		 Assert.assertEquals( Utility_Methods.getElementText(lmsHeading)," LMS - Learning Management System ");
+		 Assert.assertEquals( Utility_Methods.getElementText(lmsHeading),"LMS - Learning Management System");
 
 	}
 
@@ -189,20 +189,23 @@ public class ProgramNavModule {
 
 	// Admin should see Logout in menu bar
 	public void getLogout() {
-		Utility_Methods.getElementText(logoutHeader);
+		
+		Assert.assertEquals( Utility_Methods.getElementText(logoutHeader),"Logout");
+
 
 	}
 
 	// Admin should see sub menu in menu bar as "Add New Program"
 	public void AddNewProgram() {
-
-		Utility_Methods.getElementText(addNewProgramBtn);
+		Assert.assertEquals( Utility_Methods.getElementText(addNewProgramBtn),"Add New Program");
 
 	}
 	// Admin should see the heading "Manage Program"
 
-	public String getManageProgramHeading() {
-		return Utility_Methods.getElementText(manageProgramHeader);
+	public void getManageProgramHeading() {
+	
+		Assert.assertEquals( Utility_Methods.getElementText(manageProgramHeader),"Manage Program");
+
 
 	}
 
@@ -232,6 +235,7 @@ public class ProgramNavModule {
 
 	public void searchBar() {
 		Utility_Methods.getElementText(searchBar);
+		
 
 	}
 
