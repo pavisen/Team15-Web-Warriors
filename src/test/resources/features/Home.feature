@@ -26,7 +26,7 @@ Given Admin launches the browser
 When Admin gives the correct LMS portal URL
 Then Admin should see correct spellings in all fields 
 
-@Test
+
 Scenario: Verify the company logo
 
 Given Admin launches the browser

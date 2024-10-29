@@ -10,7 +10,7 @@ import drivers.*;
 		"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, // reporting purpose
 		monochrome = true, // console output
-		tags = "", // tags from feature file
+		tags = "@Test", // tags from feature file
 		features = "src/test/resources/features" , // location of feature files
 		glue =  "stepDefiniton" )
 

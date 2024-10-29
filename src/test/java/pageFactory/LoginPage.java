@@ -101,7 +101,7 @@ public class LoginPage {
 	       .moveToElement(loginbtn)
 	       .click()
 	       .build()
-	       .perform();;
+	       .perform();
 
 	 }
 	 

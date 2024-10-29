@@ -29,7 +29,6 @@ import org.sikuli.script.*;
 
 
 public class HomePage {
-
 	
 	public  WebDriver driver= DriverFactory.getDriver();
     String dashboardURL=ConfigReader.DashboardURL();
@@ -188,6 +187,8 @@ public class HomePage {
         }
 		return isLeftSide;
 	}
+	
+	
 	
 	public boolean appicationNameValidation(String ExpText,boolean order) throws TesseractException, IOException 
 	{
