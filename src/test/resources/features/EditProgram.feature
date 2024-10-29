@@ -130,25 +130,7 @@ Scenario: Verify mandatory fields with red * mark
 		When Admin Searches for Deleted Program name
 		Then There should be zero results.
 	
-##############Sorting Test Scenarios#################################
-#@Verify_Sorting_ProgramName
-#		Scenario: Verify sorting of  Program name in Ascending order/Descending order  
-#		Given Admin is on Program module Home Page
-#		When Admin clicks on Arrow next to program Name
-#		Then Admin See the Program Name is sorted in Ascending order/Descending order
-#		
-#@Verify_Sorting_ProgramDescription
-#		Scenario: Verify sorting of  Program Description in Ascending order/Descending order  
-#		Given Admin is on Program module
-#		When Admin clicks on Arrow next to Program Description
-#		Then Admin See the program Description is sorted in Ascending order/Descending order														 		
-#
-#@Verify_Sorting_ProgramStatus
-#		Scenario: Verify sorting of Program status in Ascending order/Descending order  
-#		Given Admin is on Program module
-#		When Admin clicks on Arrow next to Program status
-#		Then Admin See the Program Status is sorted in Ascending order/Descending order
-#
+
 #############Pagination######################
 #@Verify_Click_NextPage_Link
 #		Scenario: Verify Admin is able to click Next page link 
