@@ -31,11 +31,13 @@ import utilities.ConfigReader;
 import utilities.ExcelReader;
 
 public class LoginSteps {
-	
+
 	public  WebDriver driver;	
 	WebDriverWait wait;
     LoginPage loginPage = new LoginPage();
-    ExcelReader exelread= new ExcelReader();
+    ExcelReader exelread= new ExcelReader();	
+
+	
     
     @Given("Admin Gives the valid LMS portal URL")
     public void admin_gives_the_valid_lms_portal_url() {    	
