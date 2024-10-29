@@ -1,12 +1,12 @@
 package utilities;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
+    
 	
     private static Properties properties;
     private final static String propertyFilePath = ".\\config\\config.properties";    
@@ -49,6 +49,17 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Username not specified in the Config.properties file");
     }
+
+        //DashboardURL
+    
+        public static String baseUrl()
+        {    	
+             String BaseURL=properties.getProperty("baseurl");
+             if (BaseURL != null)
+                return BaseURL;
+             else 
+                 throw new RuntimeException("Username not specified in the Config.properties file");
+        }
     
     // UserName
     public static String userName()
@@ -87,33 +98,16 @@ public class ConfigReader {
         else
             throw new RuntimeException("login not specified in the Config.properties file");
     }
+
+ 
+   
+
     public static String getexcelfilepath() {
         String excelfilelpath = properties.getProperty("excelFilePath");
         if (excelfilelpath != null)
             return excelfilelpath;
         else
             throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
-    }
-
-  
-    // UserName
-    public static String userName()
-    {    	
-    	 String loginUserName=properties.getProperty("username");
-    	 if (loginUserName != null)
-		    return loginUserName;
-    	 else 
-    		 throw new RuntimeException("Username not specified in the Config.properties file");
-    }
-    
-    // Password
-    public static String passWord()
-    {    	
-    	 String loginPassword=properties.getProperty("password");
-    	 if (loginPassword != null)
-		    return loginPassword;
-    	 else 
-    		 throw new RuntimeException("Password not specified in the Config.properties file");
     }
     
     //Program Name
