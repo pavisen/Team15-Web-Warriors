@@ -18,11 +18,12 @@ import utilities.Utility_Methods;
 
 public class LoginPage {
 	
+	
     public  WebDriver driver= DriverFactory.getDriver();
     String dashboardURL=ConfigReader.DashboardURL();
 	String baseurl = ConfigReader.loginPage();
-	 Utility_Methods util=new Utility_Methods();
-	 WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	 Utility_Methods util=new Utility_Methods();	 
+	 Actions actions = new Actions(DriverFactory.getDriver());
 	 
 	@FindBy(id="username")
 	WebElement username;
@@ -36,14 +37,15 @@ public class LoginPage {
 	@FindBy(css = ".mat-error")
 	WebElement errorMessage;
 	
+    @FindBy(id="program")
+	WebElement ProgramBtn;
 	
     public LoginPage() {
 
 		PageFactory.initElements(driver, this);		
 
 	}
-    
-    
+        
     
 //To get LOg in URL
 	public void getbaseurl() {
@@ -62,7 +64,6 @@ public class LoginPage {
 	    }
 
 	public void enterUsername(String userName) {
-
 		username.sendKeys(userName);
 
 	}
@@ -72,7 +73,8 @@ public class LoginPage {
 	}
 
 	public void clickLogin() {
-		loginbtn.click();
+		Utility_Methods.webElement_Click(loginbtn);
+		
 	}
 	
 	 public String loginErrormessage()
@@ -82,18 +84,44 @@ public class LoginPage {
 	     return message;
 	    }
 	
-	 public void login_usingKeyBoardAction()
-	 {
-		    Actions actions = new Actions(DriverFactory.getDriver());
-	    	actions.sendKeys(Keys.TAB);
-	    	actions.moveToElement(username).sendKeys(ConfigReader.userName()).perform();
-	    	actions.sendKeys(Keys.TAB);
-	    	actions.moveToElement(password).sendKeys(ConfigReader.passWord()).perform();
-	    	actions.sendKeys(Keys.TAB);
-	    	actions.moveToElement(loginbtn).click().perform();	    	
+	 public String DashboardValidation()
+	 {	 
+		    util.waitForElement(ProgramBtn);
+	   	    String title2 = DriverFactory.getDriver().getCurrentUrl(); 
+		    return title2;
+		 
+	 }
+	 
+	 
+	 public void login_usingKeyBoardAction()	 {	 
+		 
+		     Actions actions = new Actions(DriverFactory.getDriver());
+		    actions.sendKeys(Keys.TAB).sendKeys(ConfigReader.userName()).perform();	
+		    actions.sendKeys(Keys.TAB).sendKeys(ConfigReader.passWord()).perform();	    	
+	    	actions.sendKeys(Keys.TAB).sendKeys(Keys.ENTER).build().perform();	
+	    	    	
 	 }
 
-    
+	 public void login_UsingmouseActions()
+	 
+	 { 	
+		 
+		 actions.moveToElement(username).click()
+	       .sendKeys(ConfigReader.userName())
+	       .moveToElement(password).click()
+	       .sendKeys(ConfigReader.passWord())
+	       .moveToElement(loginbtn)
+	       .click()
+	       .build()
+	       .perform();;
+
+	 }
 	 
 	 
+	 public String LMSportalURLValidation()
+	 {
+		    util.waitForElement(loginbtn);
+	   	    String title2 = DriverFactory.getDriver().getCurrentUrl(); 
+		     return title2;
+	 }
 }

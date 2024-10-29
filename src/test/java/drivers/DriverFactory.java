@@ -70,8 +70,9 @@ public class DriverFactory {
     // Close the WebDriver
     public  void closeDriver() {
         if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove(); // Removes driver from ThreadLocal to clean up resources
+        	driver.get().close();
+        // driver.get().quit();
+           // driver.remove(); // Removes driver from ThreadLocal to clean up resources
         }
     }
 }
