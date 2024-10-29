@@ -128,7 +128,7 @@ public class EditProgramPage {
     	Searchbar.sendKeys(ConfigReader.SearchProgName());
     }
 //    public void SearchBar_Write_Deleted() {
-//    	Searchbar.sendKeys(ConfigReader.SearchDeletedProgName());
+//    	Searchbar.sendKeys(ConfigReader.SearchProgName());
 //    }
     public void clear_searchfield() {
     	Searchbar.clear();
@@ -142,11 +142,11 @@ public class EditProgramPage {
     }
     public void Edit_Prog_Name_Textbox() {
     	ProgNameTextbox.clear();
-    	ProgNameTextbox.sendKeys(ConfigReader.GetEditProgramName());
+    	ProgNameTextbox.sendKeys(ConfigReader.SearchProgName());
     }
     public void Edit_ProDescription() {
     	DescriptionTextbox.clear();
-    	DescriptionTextbox.sendKeys(ConfigReader.GetEditProgramDescription());
+    	DescriptionTextbox.sendKeys(ConfigReader.SearchProgDescription());
     }
     public void Search_Program_Description() {
     	Searchbar.sendKeys(ConfigReader.SearchProgDescription());
@@ -154,12 +154,12 @@ public class EditProgramPage {
     
     public void get_updatedProgName() {
     	String actualProgname=UpdatedProgName.getText();
-    	String expectedProgName=ConfigReader.GetEditProgramName();
+    	String expectedProgName=ConfigReader.SearchProgName();
     	Assert.assertEquals(actualProgname, expectedProgName);
     }
     public void get_updatedProgDescription() {
     	String actualDescription=UpdatedDescription.getText();
-    	String expectedDescription=ConfigReader.GetEditProgramDescription();
+    	String expectedDescription=ConfigReader.SearchProgDescription();
     	Assert.assertEquals(actualDescription, expectedDescription);
     }
     
