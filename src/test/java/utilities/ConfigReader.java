@@ -166,6 +166,7 @@ public class ConfigReader {
     	 else 
     		 throw new RuntimeException("Program Description is not specified in the Config.properties file");
     }
+}
 
 
     // public static String geturl(String pagename) {

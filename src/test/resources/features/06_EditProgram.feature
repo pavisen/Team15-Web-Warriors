@@ -5,10 +5,10 @@ Feature: Edit, Delete, Sort, Pagination Program Feature file
 
 ##@launching_website
 Background: Launching application
-Given Admin launch the browser_1
-When Admin gives the correct LMS portal URL_1
-And Admin click on Program Module Link on Dashboard_1
-Then Admin should land on dashboard page_1
+    Given Admin Gives the valid LMS portal URL
+    And Admin is in login Page
+    When Admin enter valid credentials  and clicks login button 
+    And Admin click on Program Module Link on Dashboard_1
 
 #################SearchBar Test Scenarios####################		
 @Verify_SearchResult_ProgramName

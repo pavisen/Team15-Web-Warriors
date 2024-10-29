@@ -1,7 +1,11 @@
 package pageFactory;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import drivers.DriverFactory;
 import utilities.ConfigReader;
+import utilities.ExcelReader;
 import utilities.Utility_Methods;
 
 public class LoginPage {
@@ -53,6 +58,8 @@ public class LoginPage {
 	}
 	
 	 public void readDataFromSheet(String sheetName, Integer rowNumber) throws IOException, InvalidFormatException {
+		    String userNameExcelValue;
+		    String passwordExcelValue;
 	        ExcelReader reader = new ExcelReader();
 	        List<Map<String, String>> testdata = reader.getData("src/test/resources/TestData/Team15-TestData.xlsx", sheetName);
 	        userNameExcelValue = testdata.get(rowNumber).get("username");
@@ -73,7 +80,7 @@ public class LoginPage {
 	}
 
 	public void clickLogin() {
-		Utility_Methods.webElement_Click(loginbtn);
+		util.webElement_Click(loginbtn);
 		
 	}
 	

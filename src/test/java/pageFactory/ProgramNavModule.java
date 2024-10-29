@@ -25,6 +25,7 @@ public class ProgramNavModule {
 	// private static final String configProperties = null;
 	public static ConfigReader configReader = new ConfigReader();
 	public static WebDriver driver = DriverFactory.getDriver();
+	Utility_Methods util = new Utility_Methods();
 	@FindBy(xpath = "//button/span[text()='Program']")
 	WebElement program;
 
@@ -98,7 +99,7 @@ public class ProgramNavModule {
 	}
 
 	public boolean validateDashboardPage() {
-		if (driver.getTitle().equals("LMS") && Utility_Methods.getElementText(lmsHeading) != "") {
+		if (driver.getTitle().equals("LMS") && util.getElementText(lmsHeading) != "") {
 			if (headers.isEmpty()) {
 				System.out.println("No headings found on the page.");
 				return false;
@@ -110,10 +111,10 @@ public class ProgramNavModule {
 	// Records of the newly created "Program Name" is displayed and match the data
     // entered
     public void verifyProgramName() {
-         Assert.assertTrue(Utility_Methods.getElementText(verifyName).contains(configReader.SearchProgName()),"Program not found");
+         Assert.assertTrue(util.getElementText(verifyName).contains(configReader.SearchProgName()),"Program not found");
     }
 	public void clickProgram() {
-		Utility_Methods.webElement_Click(program);
+		util.webElement_Click(program);
 	//	program.click();
 
 	}
@@ -168,7 +169,7 @@ public class ProgramNavModule {
 
 	// Admin should see the heading "LMS - Learning Management System"
 	public void lmsHeading() {
-		 Assert.assertEquals( Utility_Methods.getElementText(lmsHeading),"LMS - Learning Management System");
+		 Assert.assertEquals( util.getElementText(lmsHeading),"LMS - Learning Management System");
 
 	}
 
@@ -190,21 +191,21 @@ public class ProgramNavModule {
 	// Admin should see Logout in menu bar
 	public void getLogout() {
 		
-		Assert.assertEquals( Utility_Methods.getElementText(logoutHeader),"Logout");
+		Assert.assertEquals( util.getElementText(logoutHeader),"Logout");
 
 
 	}
 
 	// Admin should see sub menu in menu bar as "Add New Program"
 	public void AddNewProgram() {
-		Assert.assertEquals( Utility_Methods.getElementText(addNewProgramBtn),"Add New Program");
+		Assert.assertEquals( util.getElementText(addNewProgramBtn),"Add New Program");
 
 	}
 	// Admin should see the heading "Manage Program"
 
 	public void getManageProgramHeading() {
 	
-		Assert.assertEquals( Utility_Methods.getElementText(manageProgramHeader),"Manage Program");
+		Assert.assertEquals( util.getElementText(manageProgramHeader),"Manage Program");
 
 
 	}
@@ -234,7 +235,7 @@ public class ProgramNavModule {
 	// Admin should see Search bar with text as "Search..."
 
 	public void searchBar() {
-		Utility_Methods.getElementText(searchBar);
+		util.getElementText(searchBar);
 		
 
 	}
@@ -295,7 +296,7 @@ public class ProgramNavModule {
 
 // Admin searches with newly created "Program Name"
     public void searchProgramName() {
-    	Utility_Methods.webSendKeys(searchBar, ConfigReader.SearchProgName());
+    	util.webSendKeys(searchBar, ConfigReader.SearchProgName());
     }
 	
 	// Admin should see the sort arrow icon beside to each column header except Edit

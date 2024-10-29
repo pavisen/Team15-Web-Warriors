@@ -94,6 +94,7 @@ public class AddClassPage {
 	public WebElement Recording;
 	@FindBy(xpath = "//div[@class='signin-content']")
 	public WebElement mainwindow;
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	public AddClassPage() {
 		PageFactory.initElements(driver, this);
@@ -139,7 +140,7 @@ public class AddClassPage {
 
 	public void bootstrap_StaffName_Dropdown() {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		Staffname_Dropdownclick.click();
+		js.executeScript("arguments[0].click();", Staffname_Dropdownclick);
 		// List<WebElement> Options =
 		// driver.findElements(By.xpath("//div[contains(@class,'p-dropdown-items-wrapper')]/ul/p-dropdownitem"));;
 		WebElement option = driver.findElement(By.xpath("//li[@aria-label='Getha Takur']"));
@@ -151,10 +152,8 @@ public class AddClassPage {
 	public void classdate_calender() throws InterruptedException {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		Actions act = new Actions(driver);
-		Classdate_cal.click();
-		// act.moveToElement(Calender_window);
-		// util.webElement_Click(Classdate_cal);
-		// Thread.sleep(1000);
+		js.executeScript("arguments[0].click();", Classdate_cal);
+		//Classdate_cal.click();
 		String cur_month = driver.findElement(By.xpath("//span[contains(@class,'p-datepicker-month')]")).getText();
 		String cur_year = driver.findElement(By.xpath("//span[contains(@class,'p-datepicker-year')]")).getText();
 
@@ -166,8 +165,6 @@ public class AddClassPage {
 
 		}
 		driver.findElement(By.xpath("//td[contains(@class,'ng-star-inserted')]/span[text()='21']")).click();
-		// driver.findElement(By.xpath(" //td[@class='ng-tns-c178-16
-		// ng-star-inserted']/span[text()='27']")).click();
 		System.out.println("Date set");
 		act.moveToElement(classDetailsPopupwindow).click().perform();
 		// classDetailsPopupwindow.click();

@@ -6,7 +6,7 @@ import utilities.ConfigReader;
 import utilities.LoggerLoad;
 import drivers.*;
 
-@CucumberOptions(plugin = { "pretty", "html:target/ds_Algo_Reports.html",
+@CucumberOptions(plugin = { "pretty", "html:target/LMSPhase2_Reports.html",
 		"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, // reporting purpose
 		monochrome = true, // console output
@@ -35,25 +35,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		return super.scenarios();
 	}
 
-
-	/*
-	 * @Parameters({ "browser" }) public void defineBrowser( @Optional("chrome")
-	 * String browser) throws Throwable { ConfigReader.readConfig(); // Load
-	 * configurations LoggerLoad.info("Setting up WebDriver for browser: " +
-	 * browser);
-	 * 
-	 * // Initialize DriverFactory and WebDriver driverFactory= new
-	 * drivers.DriverFactory(); // Create an instance of DriverFactory
-	 * driverFactory.initializeWebDriver(browser); // Initialize WebDriver for the
-	 * given browser
-	 * 
-	 * ConfigReader.setBrowserType(browser); // Optional: for further configuration
-	 * }
-	 * 
-	 * 
-	 * public void tearDown() { // Close the WebDriver using the DriverFactory
-	 * instance if ( driverFactory!= null) { driverFactory.closeDriver(); }
-	 * LoggerLoad.info("Closed the WebDriver after test execution"); }
-	 */
 	
 }

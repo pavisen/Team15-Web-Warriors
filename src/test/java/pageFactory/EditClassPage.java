@@ -40,6 +40,7 @@ public class EditClassPage {
 	public WebElement SuccessMsg_updateClass2;
 
 	WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 	
 
 	public EditClassPage() {
@@ -70,8 +71,7 @@ public class EditClassPage {
 	public void editClassDetailsWindow() throws InterruptedException {
 		searchClass(config.BatchName());
 		System.out.println("Before Clicking edit");
-		 Thread.sleep(1000);
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		 //Thread.sleep(1000);
 		 js.executeScript("arguments[0].click();", editClassButton);	
 		//util.webElement_Click(deleteEACHClassButton);
 		
@@ -82,13 +82,12 @@ public class EditClassPage {
 		//addClassPage.classTopic.sendKeys(classtopic);
 		System.out.println("before choosing calender");
 		Thread.sleep(1000);
-		//addClassPage.classdate_calender();
+		addClassPage.classdate_calender();
 		addClassPage.bootstrap_StaffName_Dropdown();
 		addClassPage.Active.click();
 		addClassPage.Comments.sendKeys("Testing");
 		addClassPage.Notes.sendKeys("Testing");
 		addClassPage.Recording.sendKeys("Testing");
-		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", addClassPage.Save_Class);
 		
 		
@@ -101,11 +100,10 @@ public class EditClassPage {
 		addClassPage.ClassDescription.sendKeys(classDesc);
 		System.out.println("before choosing calender");
 		Thread.sleep(1000);
-		//addClassPage.classdate_calender();
+		addClassPage.classdate_calender();
 		// System.out.println(class_NumberOfClasses.getText());
 		addClassPage.StaffName.sendKeys(Staffname);
-		addClassPage.InActive.click();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", addClassPage.InActive);
 		js.executeScript("arguments[0].click();", addClassPage.Save_Class);
 
 	}
