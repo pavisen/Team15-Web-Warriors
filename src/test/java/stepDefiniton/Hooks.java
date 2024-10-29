@@ -41,10 +41,10 @@ public class Hooks {
 
 	
 	  
-	 @After 
+       @After 
 	  public void afterScenario(Scenario scenario) {
 		  DriverFactory driverFactory = new DriverFactory();
-	  driverFactory.closeDriver();
+	      driverFactory.closeDriver();
 	  
 	  }
 	 

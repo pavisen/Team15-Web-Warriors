@@ -10,7 +10,7 @@ import drivers.*;
 		"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, // reporting purpose
 		monochrome = true, // console output
-		tags = "@Test", // tags from feature file
+		tags = " ", // tags from feature file
 		features = "src/test/resources/features" , // location of feature files
 		glue =  "stepDefiniton" )
 
@@ -30,7 +30,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	}
 
 	@Override
-	@DataProvider(parallel = true)
+	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
